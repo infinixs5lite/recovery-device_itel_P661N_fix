@@ -57,7 +57,7 @@ Minor checks
 - [✔] Fastbootd
 
 # Clone
-    git clone https://github.com/naden01/tecno_LH8n.git -b android-12.1 device/tecno/LH8n
+    git clone https://github.com/rdndds/recovery-device_itel_P661N.git -b android-12.1 device/itel/P661N
 
 # Build
-    export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_LH8n-eng; mka vendorbootimage
+    . build/envsetup.sh; lunch twrp_P661N-eng; m vendorbootimage
