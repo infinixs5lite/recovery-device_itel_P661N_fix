@@ -1,8 +1,8 @@
-# twrp device tree for Tecno Pova 5 pro ( LH8n )
+# twrp device tree for itel P55 5G ( P661N )
 
-Tecno Pova 5 Pro ( _LH8n_ ) is a mid-range smartphone from Tecno
+itel P55 5G (P661N) is an entry-level smartphone from itel
 
-Released on 2023, August 01
+Released on 2023, October 05
 
 # Device SPecifications
 Basic   | Spec Sheet
@@ -10,14 +10,14 @@ Basic   | Spec Sheet
 CPU     | Octa-core (2x2.4 GHz Cortex-A76 & 6x2.0 GHz Cortex-A55)
 Chipset | MediaTek Dimensity 6080 (MT6833)
 GPU     | Mali-G57 MC2
-Memory  | 4/8 GB RAM
-Shipped Android Version | 13 (HIOS 13.5) ~ upgradable to hios 14 ~
-Storage | 128/256 GB (UFS)
+Memory  | 4/6 GB RAM
+Shipped Android Version | 13 (itel OS 13)
+Storage | 64/128 GB (UFS)
 Battery | 5000 mAh, non-removable
-Display | 1080 x 2460 pixels,6.78 inches, 60/90/120hz
+Display | 720 x 1612 pixels,6.6 inches, 60/90hz
 
 # picture
-![poba5pro](https://github.com/user-attachments/assets/0bfd51aa-7b85-4d65-afe7-602bfc4cb12e)
+![P661N](https://fdn2.gsmarena.com/vv/bigpic/itel-power-55.jpg)
 
 # Checks
 Blocking checks

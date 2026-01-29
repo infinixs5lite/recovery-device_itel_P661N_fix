@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/tecno/LH8n
+LOCAL_PATH := device/itel/P661N
 
 # Enable Virtual A/B OTA
 ENABLE_VIRTUAL_AB := true
