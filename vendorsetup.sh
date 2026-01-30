@@ -23,7 +23,7 @@
     export ALLOW_MISSING_DEPENDENCIES=true
 
 #OFR build settings & info
-    export TARGET_DEVICE_ALT="rock,stone"
+    export TARGET_DEVICE_ALT="P661N"
     export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
     export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
     export FOX_VENDOR_BOOT_RECOVERY_FULL_REFLASH=1
@@ -52,29 +52,10 @@
     export OF_FL_PATH1=/sys/class/leds/flashlight
     export OF_FL_PATH2=/sys/class/leds/torch-light0
 
-# Haptics patch for regulator-vibrator support
+# Haptics patch - simple apply, no checks
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    TFILE="$SCRIPT_DIR/out/hapticspath.patched"
-    [ ! -d "$SCRIPT_DIR/out" ] && mkdir -p "$SCRIPT_DIR/out"
     PATCH_FILE="$SCRIPT_DIR/patches/0001-Add-regulator-vibrator-haptics-support.patch"
-
-    # Check if already patched
-    if [ -f "$TFILE" ]; then
-        echo "haptics patch already applied, skipping"
-        return 0
-    fi
-
-    # Find workspace root and verify file exists
     WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
-    TARGET_FILE="$WORKSPACE_ROOT/bootable/recovery/minuitwrp/events.cpp"
 
-    if [ ! -f "$TARGET_FILE" ]; then
-        echo "WARNING: events.cpp not found, skipping haptics patch"
-        return 0
-    fi
-
-    # Try to apply patch, ignore failures (might already be applied)
     cd "$WORKSPACE_ROOT"
     git apply "$PATCH_FILE" 2>/dev/null || true
-    touch "$TFILE"
-    echo "haptics patch applied or already present"
