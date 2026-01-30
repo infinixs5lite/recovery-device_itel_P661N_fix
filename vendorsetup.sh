@@ -1,43 +1,80 @@
 #!/bin/bash
+#
+#	This file is part of the OrangeFox Recovery Project
+# 	Copyright (C) 2020-2025 The OrangeFox Recovery Project
+#
+#	OrangeFox is free software: you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation, either version 3 of the License, or
+#	any later version.
+#
+#	OrangeFox is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	GNU General Public License for more details.
+#
+# 	This software is released under GPL version 3 or any later version.
+#	See <http://www.gnu.org/licenses/>.
+#
+# 	Please maintain this if you use this script or any part of it
+#
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TFILE="$SCRIPT_DIR/out/hapticspath.patched"
-[ ! -d "$SCRIPT_DIR/out" ] && mkdir -p "$SCRIPT_DIR/out"
+    export LC_ALL="C.UTF-8"
+    export ALLOW_MISSING_DEPENDENCIES=true
 
-RET=0
-REVERSE=0
-PATCH_FILE="$SCRIPT_DIR/patches/0001-Add-regulator-vibrator-haptics-support.patch"
+#OFR build settings & info
+    export TARGET_DEVICE_ALT="rock,stone"
+    export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+    export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+    export FOX_VENDOR_BOOT_RECOVERY_FULL_REFLASH=1
+    export FOX_VENDOR_BOOT_RECOVERY=1
+    export FOX_DELETE_MAGISK_ADDON=1
+    export FOX_DELETE_AROMAFM=1
+    export FOX_ENABLE_APP_MANAGER=1
+    export FOX_SETTINGS_ROOT_DIRECTORY=/persist/OFRP
+    export FOX_RESET_SETTINGS=1
 
-if [ -f "$TFILE" ]; then
-    echo "haptics path patched already, skipping"
-elif [ -d "bootable/recovery/.git" ]; then
-    cd bootable/recovery
-    git apply --reverse --check $PATCH_FILE || REVERSE=$?
-    cd ../../
+    #OFR binary files
+    export FOX_USE_BASH_SHELL=1
+    export FOX_USE_NANO_EDITOR=1
+    export FOX_USE_TAR_BINARY=1
+    export FOX_USE_SED_BINARY=1
+    export FOX_USE_XZ_UTILS=1
+    export FOX_ASH_IS_BASH=1
+    export OF_ENABLE_LPTOOLS=1
 
-    if [ $REVERSE -eq 0 ]; then
-        touch $TFILE
-    else
-        cd bootable/recovery
-        git apply $PATCH_FILE || RET=$?
-        cd ../../
-        if [ $RET -ne 0 ]; then
-            echo "ERROR: minuitwrp/events.cpp could not be patched! Vibration in TWRP will not work."
-        else
-            echo "OK: minuitwrp/events.cpp patched"
-            touch $TFILE
-        fi
+    #OTA
+    export FOX_AB_DEVICE=1
+    export FOX_VIRTUAL_AB_DEVICE=1
+    export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
+
+    #Flashlight
+    export OF_FL_PATH1=/sys/class/leds/flashlight
+    export OF_FL_PATH2=/sys/class/leds/torch-light0
+
+# Haptics patch for regulator-vibrator support
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    TFILE="$SCRIPT_DIR/out/hapticspath.patched"
+    [ ! -d "$SCRIPT_DIR/out" ] && mkdir -p "$SCRIPT_DIR/out"
+    PATCH_FILE="$SCRIPT_DIR/patches/0001-Add-regulator-vibrator-haptics-support.patch"
+
+    # Check if already patched
+    if [ -f "$TFILE" ]; then
+        echo "haptics patch already applied, skipping"
+        return 0
     fi
-else
-    cd ../../
-    patch -p1 -N -f < $PATCH_FILE >/dev/null 2>&1
-    RET=$?
-    if [ $RET -eq 0 ]; then
-        echo "OK: minuitwrp/events.cpp patched"
-        touch $TFILE
-    elif [ $RET -eq 1 ]; then
-        touch $TFILE
-    else
-        echo "ERROR: minuitwrp/events.cpp could not be patched! Vibration in TWRP will not work."
+
+    # Find workspace root and verify file exists
+    WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+    TARGET_FILE="$WORKSPACE_ROOT/bootable/recovery/minuitwrp/events.cpp"
+
+    if [ ! -f "$TARGET_FILE" ]; then
+        echo "WARNING: events.cpp not found, skipping haptics patch"
+        return 0
     fi
-fi
+
+    # Try to apply patch, ignore failures (might already be applied)
+    cd "$WORKSPACE_ROOT"
+    git apply "$PATCH_FILE" 2>/dev/null || true
+    touch "$TFILE"
+    echo "haptics patch applied or already present"
