@@ -33,3 +33,9 @@ PRODUCT_GMS_CLIENTID_BASE := android-transsion
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.twrp.vendor_boot=true \
     persist.sys.fuse.passthrough.enable=true
+
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="vnd_p661n_h334-user 12 SP1A.210812.016 928046 release-keys"
+
+BUILD_FINGERPRINT := Itel/P661N-GL/itel-P661N:12/SP1A.210812.016/250723V610:user/release-keys
