@@ -52,10 +52,15 @@
     export OF_FL_PATH1=/sys/class/leds/flashlight
     export OF_FL_PATH2=/sys/class/leds/torch-light0
 
-# Haptics patch - simple apply, no checks
+# Haptics patch - apply if not already applied
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     PATCH_FILE="$SCRIPT_DIR/patches/0001-Add-regulator-vibrator-haptics-support.patch"
     WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 
     cd "$WORKSPACE_ROOT"
-    git apply "$PATCH_FILE" 2>/dev/null || true
+    if patch -p1 --dry-run < "$PATCH_FILE" 2>/dev/null | grep -q "checking"; then
+        patch -p1 < "$PATCH_FILE" 2>&1
+        echo "[P661N] Haptics patch applied!"
+    else
+        echo "[P661N] Haptics patch already applied or cannot be applied"
+    fi
