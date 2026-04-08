@@ -192,3 +192,7 @@ TW_LOAD_VENDOR_BOOT_MODULES := true
 # Version
 TW_DEVICE_VERSION := R
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+
+# PitchBlack Flags
+PB_DISABLE_DEFAULT_DM_VERITY := true
+PB_TORCH_PATH := "/sys/class/torch/torch/torch_level"
