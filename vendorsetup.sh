@@ -1,66 +1,46 @@
 #!/bin/bash
 #
-#	This file is part of the OrangeFox Recovery Project
-# 	Copyright (C) 2020-2025 The OrangeFox Recovery Project
+# This file is part of the OrangeFox Recovery Project
+# Copyright (C) 2020-2025 The OrangeFox Recovery Project
 #
-#	OrangeFox is free software: you can redistribute it and/or modify
-#	it under the terms of the GNU General Public License as published by
-#	the Free Software Foundation, either version 3 of the License, or
-#	any later version.
+# OrangeFox is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
 #
-#	OrangeFox is distributed in the hope that it will be useful,
-#	but WITHOUT ANY WARRANTY; without even the implied warranty of
-#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#	GNU General Public License for more details.
+# OrangeFox is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
 #
-# 	This software is released under GPL version 3 or any later version.
-#	See <http://www.gnu.org/licenses/>.
+# This software is released under GPL version 3 or any later version.
+# See <http://www.gnu.org/licenses/>.
 #
-# 	Please maintain this if you use this script or any part of it
+# Please maintain this if you use this script or any part of it.
 #
 
-    export LC_ALL="C.UTF-8"
-    export ALLOW_MISSING_DEPENDENCIES=true
+device_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+workspace_root="$(cd "${device_dir}/../../.." && pwd)"
+patch_file="${device_dir}/patches/0001-Add-regulator-vibrator-haptics-support.patch"
 
-#OFR build settings & info
-    export TARGET_DEVICE_ALT="P661N"
-    export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-    export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-    export FOX_VENDOR_BOOT_RECOVERY_FULL_REFLASH=1
-    export FOX_VENDOR_BOOT_RECOVERY=1
-    export FOX_DELETE_MAGISK_ADDON=1
-    export FOX_DELETE_AROMAFM=1
-    export FOX_ENABLE_APP_MANAGER=1
-    export FOX_SETTINGS_ROOT_DIRECTORY=/persist/OFRP
-    export FOX_RESET_SETTINGS=1
-
-    #OFR binary files
-    export FOX_USE_BASH_SHELL=1
-    export FOX_USE_NANO_EDITOR=1
-    export FOX_USE_TAR_BINARY=1
-    export FOX_USE_SED_BINARY=1
-    export FOX_USE_XZ_UTILS=1
-    export FOX_ASH_IS_BASH=1
-    export OF_ENABLE_LPTOOLS=1
-
-    #OTA
-    export FOX_AB_DEVICE=1
-    export FOX_VIRTUAL_AB_DEVICE=1
-    export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
-
-    #Flashlight
-    export OF_FL_PATH1=/sys/class/leds/flashlight
-    export OF_FL_PATH2=/sys/class/leds/torch-light0
-
-# Haptics patch - apply if not already applied
-    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    PATCH_FILE="$SCRIPT_DIR/patches/0001-Add-regulator-vibrator-haptics-support.patch"
-    WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
-
-    cd "$WORKSPACE_ROOT"
-    if patch -p1 --dry-run < "$PATCH_FILE" 2>/dev/null | grep -q "checking"; then
-        patch -p1 < "$PATCH_FILE" 2>&1
-        echo "[P661N] Haptics patch applied!"
+if [[ ! -f "${patch_file}" ]]; then
+    echo "[P661N] Missing patch: ${patch_file}"
+elif ! command -v patch >/dev/null 2>&1; then
+    echo "[P661N] Missing required command: patch"
+elif (
+    cd "${workspace_root}" &&
+    patch -p1 -N --dry-run --silent < "${patch_file}" >/dev/null 2>&1
+); then
+    if (
+        cd "${workspace_root}" &&
+        patch -p1 -N --silent < "${patch_file}" >/dev/null 2>&1
+    ); then
+        echo "[P661N] Applied haptics patch"
     else
-        echo "[P661N] Haptics patch already applied or cannot be applied"
+        echo "[P661N] Failed to apply haptics patch"
     fi
+else
+    echo "[P661N] Haptics patch already applied or not applicable"
+fi
+
+unset device_dir workspace_root patch_file

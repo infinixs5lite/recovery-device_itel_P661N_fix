@@ -57,7 +57,7 @@ Minor checks
 - [✔] Fastbootd
 
 # Clone
-    git clone https://github.com/rdndds/recovery-device_itel_P661N.git -b android-12.1 device/itel/P661N
+    git clone https://github.com/rdndds/recovery-device_itel_P661N.git -b android-12.1
 
 # Build
     . build/envsetup.sh; lunch twrp_P661N-eng; m vendorbootimage
