@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #	This file is part of the OrangeFox Recovery Project
-# 	Copyright (C) 2020-2024 The OrangeFox Recovery Project
+# 	Copyright (C) 2020-2026 The OrangeFox Recovery Project
 #
 #	OrangeFox is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
@@ -18,90 +18,60 @@
 #
 # 	Please maintain this if you use this script or any part of it
 #
-
-FDEVICE="P661N"
-#set -o xtrace
-
-fox_get_target_device() {
-local chkdev
-chkdev=$(echo "$BASH_SOURCE" | grep -w "$FDEVICE")
-   if [ -n "$chkdev" ]; then
-      FOX_BUILD_DEVICE="$FDEVICE"
-   else
-      chkdev=$(set | grep BASH_ARGV | grep -w "$FDEVICE")
-      [ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
-   fi
-}
-
-if [ -z "${1:-}" ] && [ -z "${FOX_BUILD_DEVICE:-}" ]; then
-   fox_get_target_device
-fi
-
-if [ "${1:-}" = "$FDEVICE" ] || [ "${FOX_BUILD_DEVICE:-}" = "$FDEVICE" ]; then
 	export LC_ALL="C.UTF-8"
- 	export ALLOW_MISSING_DEPENDENCIES=true
+	export ALLOW_MISSING_DEPENDENCIES=true
 
- 	# OFR build settings & info
-    export TARGET_DEVICE_ALT="P661N"
-    export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-    export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-    export FOX_RECOVERY_VENDOR_BOOT_PARTITION="/dev/block/by-name/vendor_boot"
-    export FOX_VENDOR_BOOT_RECOVERY_FULL_REFLASH=1
-    export FOX_VENDOR_BOOT_RECOVERY=1
-    export FOX_DELETE_MAGISK_ADDON=1
-    export FOX_DELETE_AROMAFM=1
-    export FOX_ENABLE_APP_MANAGER=1
-    export FOX_SETTINGS_ROOT_DIRECTORY=/persist/OFRP
-    export FOX_RESET_SETTINGS=1
+#OFR build settings & info
+	export TARGET_DEVICE_ALT="P661N"
+	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+	export FOX_VENDOR_BOOT_RECOVERY_FULL_REFLASH=1
+	export FOX_VENDOR_BOOT_RECOVERY=1
+	export FOX_DELETE_MAGISK_ADDON=1
+	export FOX_DELETE_AROMAFM=1
+	export FOX_ENABLE_APP_MANAGER=1
+	export FOX_SETTINGS_ROOT_DIRECTORY=/persist/OFRP
+	export FOX_RESET_SETTINGS=1
 
-    # OFR binary files
-    export FOX_USE_BASH_SHELL=1
-    export FOX_USE_NANO_EDITOR=1
-    export FOX_USE_TAR_BINARY=1
-    export FOX_USE_SED_BINARY=1
-    export FOX_USE_XZ_UTILS=1
-    export FOX_ASH_IS_BASH=1
-    export OF_ENABLE_LPTOOLS=1
+	#OFR binary files
+	export FOX_USE_BASH_SHELL=1
+	export FOX_USE_NANO_EDITOR=1
+	export FOX_USE_TAR_BINARY=1
+	export FOX_USE_SED_BINARY=1
+	export FOX_USE_XZ_UTILS=1
+	export FOX_ASH_IS_BASH=1
+	export OF_ENABLE_LPTOOLS=1
 
-    # OTA
+	#OTA
 	export FOX_AB_DEVICE=1
-    export FOX_VIRTUAL_AB_DEVICE=1
-    export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
+	export FOX_VIRTUAL_AB_DEVICE=1
+	export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
-    # Flashlight
-    export OF_FL_PATH1=/sys/class/torch/torch/torch_level
+	#Flashlight
+	export OF_FL_PATH1=/sys/class/torch/torch/torch_level
 
-	# let's see what are our build VARs
-	if [ -n "${FOX_BUILD_LOG_FILE:-}" ] && [ -f "$FOX_BUILD_LOG_FILE" ]; then
-  	   export | grep "FOX" >> "$FOX_BUILD_LOG_FILE"
-  	   export | grep "OF_" >> "$FOX_BUILD_LOG_FILE"
-   	   export | grep "TARGET_" >> "$FOX_BUILD_LOG_FILE"
-  	   export | grep "TW_" >> "$FOX_BUILD_LOG_FILE"
- 	fi
+device_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+workspace_root="$(cd "${device_dir}/../../.." && pwd)"
+patch_file="${device_dir}/patches/0001-Add-regulator-vibrator-haptics-support.patch"
 
-    device_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    workspace_root="$(cd "${device_dir}/../../.." && pwd)"
-    patch_file="${device_dir}/patches/0001-Add-regulator-vibrator-haptics-support.patch"
-
-    if [ ! -f "${patch_file}" ]; then
-        echo "[P661N] Missing patch: ${patch_file}"
-    elif ! command -v patch >/dev/null 2>&1; then
-        echo "[P661N] Missing required command: patch"
-    elif (
-        cd "${workspace_root}" &&
-        patch -p1 -N --dry-run --silent < "${patch_file}" >/dev/null 2>&1
-    ); then
-        if (
-            cd "${workspace_root}" &&
-            patch -p1 -N --silent < "${patch_file}" >/dev/null 2>&1
-        ); then
-            echo "[P661N] Applied haptics patch"
-        else
-            echo "[P661N] Failed to apply haptics patch"
-        fi
-    else
-        echo "[P661N] Haptics patch already applied or not applicable"
-    fi
-
-    unset device_dir workspace_root patch_file
+if [ ! -f "${patch_file}" ]; then
+	echo "[P661N] Missing patch: ${patch_file}"
+elif ! command -v patch >/dev/null 2>&1; then
+	echo "[P661N] Missing required command: patch"
+elif (
+	cd "${workspace_root}" &&
+	patch -p1 -N --dry-run --silent < "${patch_file}" >/dev/null 2>&1
+); then
+	if (
+		cd "${workspace_root}" &&
+		patch -p1 -N --silent < "${patch_file}" >/dev/null 2>&1
+	); then
+		echo "[P661N] Applied haptics patch"
+	else
+		echo "[P661N] Failed to apply haptics patch"
+	fi
+else
+	echo "[P661N] Haptics patch already applied or not applicable"
 fi
+
+unset device_dir workspace_root patch_file
