@@ -220,4 +220,28 @@ OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
 OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
 
 # Maintainer specific settings
-OF_MAINTAINER := R
+OF_MAINTAINER := nino
+
+#SHRP-specific lines
+SHRP_PATH := device/itel/P661N
+SHRP_MAINTAINER := NINO
+SHRP_DEVICE_CODE := P661N
+SHRP_OFFICIAL := true
+SHRP_INTERNAL := /sdcard
+SHRP_EXTERNAL := /sdcard1
+SHRP_OTG := /usb_otg
+SHRP_REC_TYPE := SAR
+SHRP_DEVICE_TYPE := A/B
+SHRP_EXPRESS := true
+SHRP_DARK := true
+SHRP_EXPRESS_USE_DATA := true
+SHRP_FLASH := 1
+SHRP_CUSTOM_FLASHLIGHT := true
+SHRP_FONP := /sys/class/leds/flashlight
+SHRP_FONP_1 := /sys/class/torch/torch/torch_level
+SHRP_TORCH_MAX_BRIGHTNESS := 1
+SHRP_REC := /dev/block/platform/bootdevice/by-name/vendor_boot
+SHRP_NOTCH := true
+SHRP_STATUSBAR_RIGHT_PADDING := 20
+SHRP_STATUSBAR_LEFT_PADDING := 20
+
