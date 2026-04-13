@@ -46,6 +46,8 @@
 /spmfw			emmc		/dev/block/by-name/spmfw										flags=display=spmfw;backup
 /tee			emmc		/dev/block/by-name/tee											flags=display=tee;backup
 
+/userdata_default             emmc           /dev/block/by-name/userdata                     flags=display="Userdata default";flashimg;backup=1;wipeingui
+
 # Removable Storage
 /external_sd		auto		/dev/block/mmcblk1p1				/dev/block/mmcblk0p1					flags=display="Micro SD Card";storage;wipeingui;removable;backup=0
 /usb-otg                  auto      /dev/block/sdd1   /dev/block/sdd                 flags=display="USB OTG";storage;wipeingui;removable
