@@ -14,7 +14,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, vendor/pb/config/common.mk)
 
 PRODUCT_DEVICE := P661N
-PRODUCT_NAME := pb_P661N
+PRODUCT_NAME := twrp_P661N
 PRODUCT_BRAND := Itel
 PRODUCT_MODEL := itel P55 5G
 PRODUCT_MANUFACTURER := ITEL
