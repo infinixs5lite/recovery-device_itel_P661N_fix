@@ -190,23 +190,8 @@ BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 TW_LOAD_VENDOR_BOOT_MODULES := true
 
 # Version
-TW_DEVICE_VERSION := R
+TW_DEVICE_VERSION := nino
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-
-# OrangeFox settings
-OF_DEFAULT_KEYMASTER_VERSION := 4.1
-OF_FLASHLIGHT_ENABLE := 1
-OF_NO_REFLASH_CURRENT_ORANGEFOX := 1
-OF_NO_SPLASH_CHANGE := 1
-OF_FORCE_CASEFOLDING := 1
-
-# OrangeFox GUI settings
-OF_SCREEN_H := 2418
-OF_STATUS_H := 95
-OF_STATUS_INDENT_LEFT := 48
-OF_STATUS_INDENT_RIGHT := 48
-OF_ALLOW_DISABLE_NAVBAR := 0
-OF_CLOCK_POS := 1
 
 # Recovery additional features
 OF_LOOP_DEVICE_ERRORS_TO_LOG := 1
@@ -228,6 +213,9 @@ TW_LOAD_VENDOR_MODULES  += flashlights-aw36515.ko
 TW_LOAD_VENDOR_MODULES  += v4l2-flash-led-class.ko"
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
+# Flashlight 
+TW_INCLUDE_FLASHLIGHT := true
+
 #SHRP-specific lines
 SHRP_PATH := device/itel/P661N
 SHRP_MAINTAINER := NINO
@@ -243,7 +231,6 @@ SHRP_DARK := true
 SHRP_EXPRESS_USE_DATA := true
 SHRP_FLASH := 1
 SHRP_CUSTOM_FLASHLIGHT := true
-SHRP_FONP := /sys/class/leds/flashlight
 SHRP_FONP_1 := /sys/class/torch/torch/torch_level
 SHRP_TORCH_MAX_BRIGHTNESS := 1
 SHRP_REC := /dev/block/platform/bootdevice/by-name/vendor_boot
