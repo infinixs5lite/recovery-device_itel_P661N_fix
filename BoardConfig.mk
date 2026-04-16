@@ -222,6 +222,11 @@ OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
 # Maintainer specific settings
 OF_MAINTAINER := nino
 
+# Vendor modules required for the recovery to function properly
+TW_LOAD_VENDOR_MODULES  += "flashlight.ko
+TW_LOAD_VENDOR_MODULES  += flashlights-aw36515.ko
+TW_LOAD_VENDOR_MODULES  += v4l2-flash-led-class.ko"
+
 #SHRP-specific lines
 SHRP_PATH := device/itel/P661N
 SHRP_MAINTAINER := NINO
@@ -245,3 +250,7 @@ SHRP_NOTCH := true
 SHRP_STATUSBAR_RIGHT_PADDING := 20
 SHRP_STATUSBAR_LEFT_PADDING := 20
 
+# Skyhawk Vendor modules required for the recovery to function properly
+SHRP_LOAD_VENDOR_MODULES  += "flashlight.ko
+SHRP_LOAD_VENDOR_MODULES  += flashlights-aw36515.ko
+SHRP_LOAD_VENDOR_MODULES  += v4l2-flash-led-class.ko"
