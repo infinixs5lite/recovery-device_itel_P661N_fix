@@ -200,6 +200,6 @@ OF_USE_LZ4_COMPRESSION := true
 OF_DISPLAY_FORMAT_FILESYSTEMS_DEBUG_INFO := 1
 
 # PBRP specific build flags and enable torch 
-PB_TORCH_PATH := "/sys/devices/virtual/torch/torch/torch_level"
-PB_TORCH_MAX_BRIGHTNESS := 1
+#PB_TORCH_PATH := "/sys/devices/virtual/torch/torch/torch_level"
+#PB_TORCH_MAX_BRIGHTNESS := 1
 PB_DISABLE_DEFAULT_TREBLE_COMP := true
