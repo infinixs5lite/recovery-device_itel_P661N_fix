@@ -1,11 +1,9 @@
 #
-# Copyright (C) 2024 The Android Open Source Project
-# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2022 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-
-LOCAL_PATH := device/itel/P661N
+LOCAL_PATH := device/itel/P661n
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
@@ -17,22 +15,35 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Enable Virtual A/B OTA
+ENABLE_VIRTUAL_AB := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch.mk)
 
-# A/B
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 31
+
+# API
+PRODUCT_SHIPPING_API_LEVEL := 31
+
+ENABLE_VIRTUAL_AB := true
 AB_OTA_UPDATER := true
+
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     lk \
+    odm \
+    odm_dlkm \
     product \
     system \
     system_ext \
     vbmeta_system \
     vbmeta_vendor \
     vendor \
-    vendor_boot
+    vendor_boot \
+    vendor_dlkm \
+    init_boot
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -44,9 +55,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_vendor=erofs \
     POSTINSTALL_OPTIONAL_vendor=true
 
-# Enable Virtual A/B
-ENABLE_VIRTUAL_AB := true
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch.mk)
+PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
