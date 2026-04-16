@@ -190,7 +190,7 @@ BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 TW_LOAD_VENDOR_BOOT_MODULES := true
 
 # Version
-TW_DEVICE_VERSION := R
+TW_DEVICE_VERSION := nino
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 
 # Recovery additional features
@@ -199,7 +199,7 @@ OF_ENABLE_LPTOOLS := 1
 OF_USE_LZ4_COMPRESSION := true
 OF_DISPLAY_FORMAT_FILESYSTEMS_DEBUG_INFO := 1
 
-# PBRP specific build flags
-PB_TORCH_PATH := /proc/qcom_flash
+# PBRP specific build flags and enable torch 
+PB_TORCH_PATH := "/sys/devices/virtual/torch/torch/torch_level"
 PB_TORCH_MAX_BRIGHTNESS := 1
 PB_DISABLE_DEFAULT_TREBLE_COMP := true
