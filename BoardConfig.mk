@@ -207,12 +207,6 @@ OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
 # Maintainer specific settings
 OF_MAINTAINER := nino
 
-# Vendor modules required for the recovery to function properly
-TW_LOAD_VENDOR_MODULES  += "flashlight.ko
-TW_LOAD_VENDOR_MODULES  += flashlights-aw36515.ko
-TW_LOAD_VENDOR_MODULES  += v4l2-flash-led-class.ko"
-TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
-
 # Flashlight 
 TW_INCLUDE_FLASHLIGHT := true
 
@@ -231,15 +225,9 @@ SHRP_DARK := true
 SHRP_EXPRESS_USE_DATA := true
 SHRP_FLASH := 1
 SHRP_CUSTOM_FLASHLIGHT := true
-SHRP_FONP_1 := /sys/class/torch/torch/torch_level
+SHRP_FONP := /proc/qcom_flash
 SHRP_TORCH_MAX_BRIGHTNESS := 1
 SHRP_REC := /dev/block/platform/bootdevice/by-name/vendor_boot
 SHRP_NOTCH := true
 SHRP_STATUSBAR_RIGHT_PADDING := 20
 SHRP_STATUSBAR_LEFT_PADDING := 20
-
-# Skyhawk Vendor modules required for the recovery to function properly
-SHRP_LOAD_VENDOR_MODULES  += "flashlight.ko
-SHRP_LOAD_VENDOR_MODULES  += flashlights-aw36515.ko
-SHRP_LOAD_VENDOR_MODULES  += v4l2-flash-led-class.ko"
-SHRP_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
