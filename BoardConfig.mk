@@ -226,6 +226,7 @@ OF_MAINTAINER := nino
 TW_LOAD_VENDOR_MODULES  += "flashlight.ko
 TW_LOAD_VENDOR_MODULES  += flashlights-aw36515.ko
 TW_LOAD_VENDOR_MODULES  += v4l2-flash-led-class.ko"
+TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 #SHRP-specific lines
 SHRP_PATH := device/itel/P661N
@@ -254,3 +255,4 @@ SHRP_STATUSBAR_LEFT_PADDING := 20
 SHRP_LOAD_VENDOR_MODULES  += "flashlight.ko
 SHRP_LOAD_VENDOR_MODULES  += flashlights-aw36515.ko
 SHRP_LOAD_VENDOR_MODULES  += v4l2-flash-led-class.ko"
+SHRP_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
