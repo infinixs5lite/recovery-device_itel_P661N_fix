@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2024 The Android Open Source Project
-# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2022 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -15,17 +14,11 @@ $(call inherit-product, vendor/pb/config/common.mk)
 
 PRODUCT_DEVICE := P661N
 PRODUCT_NAME := pb_P661N
-PRODUCT_BRAND := Itel
-PRODUCT_MODEL := itel P55 5G
-PRODUCT_MANUFACTURER := ITEL
+PRODUCT_BRAND := ITEL
+PRODUCT_MODEL := itel P661N
+PRODUCT_MANUFACTURER := itel
 
 PRODUCT_GMS_CLIENTID_BASE := android-transsion
-
-# Hide Reflash TWRP & FUSE passthrough
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.twrp.vendor_boot=true \
-    persist.sys.fuse.passthrough.enable=true
-
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="vnd_p661n_h334-user 12 SP1A.210812.016 928046 release-keys"
