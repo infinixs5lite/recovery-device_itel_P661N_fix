@@ -10,10 +10,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Inherit some common TWRP stuff.
-$(call inherit-product, vendor/pb/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 PRODUCT_DEVICE := P661N
-PRODUCT_NAME := pb_P661N
+PRODUCT_NAME := twrp_P661N
 PRODUCT_BRAND := ITEL
 PRODUCT_MODEL := itel P661N
 PRODUCT_MANUFACTURER := itel
