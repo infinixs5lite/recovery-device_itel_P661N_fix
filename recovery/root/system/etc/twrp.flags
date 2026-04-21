@@ -9,6 +9,7 @@
 /vbmeta			emmc		/dev/block/by-name/vbmeta										flags=display=vbmeta;slotselect;backup;flashimg
 /vbmeta_system		emmc		/dev/block/by-name/vbmeta_system									flags=display=vbmeta_system;slotselect;backup
 /vbmeta_vendor		emmc		/dev/block/by-name/vbmeta_vendor									flags=display=vbmeta_vendor;slotselect;backup
+/init_boot			emmc		/dev/block/by-name/init_boot											flags=display=init_boot;slotselect;backup;flashimg
 
 # Firmware
 /dtbo			emmc		/dev/block/by-name/dtbo											flags=display=dtbo;slotselect;backup
@@ -45,17 +46,17 @@
 /seccfg			emmc		/dev/block/by-name/seccfg										flags=display=seccfg;backup
 /spmfw			emmc		/dev/block/by-name/spmfw										flags=display=spmfw;backup
 /tee			emmc		/dev/block/by-name/tee											flags=display=tee;backup
-/tranfs emmc /dev/block/by-name/tranfs flags=display="Tranfs";flashimg;backup=1;wipeingui
-/preloader_a emmc /dev/block/by-name/preloader_a flags=display="Preloader_a";flashimg;backup=1;wipeingui
-/init_boot emmc /dev/block/by-name/init_boot flags=display="init_boot";flashimg;backup=1;wipeingui
+/tranfs   emmc  /dev/block/by-name/tranfs flags=display="Tranfs";flashimg;backup=1;wipeingui
+/preloader_a  emmc /dev/block/by-name/preloader_a flags=display="Preloader_a";flashimg;backup=1;wipeingui
+/init_boot  emmc /dev/block/by-name/init_boot flags=display="init_boot";flashimg;backup=1;wipeingui
 /bootloader1 emmc /dev/block/by-name/bootloader1 flags=display="Bootloader1";flashimg;backup=1;wipeingui
-bootloader2 emmc /dev/block/by-name/bootloader2 flags=display="Bootloader2";flashimg;backup=1;wipeingui
-dtbo emmc /dev/block/by-name/dtbo flags=display="dtbo";flashimg;backup=1;wipeingui
-lk emmc /dev/block/by-name/lk flags=display="Lk";flashimg;backup=1;wipeingui
-tee emmc /dev/block/by-name/tee flags=display="Tee";flashimg;backup=1;wipeingui
-tkv emmc /dev/block/by-name/tkv flags=display="Tkv";flashimg;backup=1;wipeingui
-pi_img emmc /dev/block/by-name/pi_img flags=display="Pi_img";flashimg;backup=1;wipeingui
-flashinfo emmc /dev/block/by-name/flashinfo flags=display="Flashinfo";flashimg;backup=1;wipeingui
+/bootloader2 emmc /dev/block/by-name/bootloader2 flags=display="Bootloader2";flashimg;backup=1;wipeingui
+/dtbo emmc /dev/block/by-name/dtbo flags=display="dtbo";flashimg;backup=1;wipeingui
+/lk emmc /dev/block/by-name/lk flags=display="Lk";flashimg;backup=1;wipeingui
+/tee emmc /dev/block/by-name/tee flags=display="Tee";flashimg;backup=1;wipeingui
+/tkv emmc /dev/block/by-name/tkv flags=display="Tkv";flashimg;backup=1;wipeingui
+/pi_img emmc /dev/block/by-name/pi_img flags=display="Pi_img";flashimg;backup=1;wipeingui
+/flashinfo emmc /dev/block/by-name/flashinfo flags=display="Flashinfo";flashimg;backup=1;wipeingui
 
 /userdata_default             emmc           /dev/block/by-name/userdata                     flags=display="Userdata default";flashimg;backup=1;wipeingui
 
