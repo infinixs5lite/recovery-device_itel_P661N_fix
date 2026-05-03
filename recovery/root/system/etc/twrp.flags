@@ -46,17 +46,17 @@
 /seccfg			emmc		/dev/block/by-name/seccfg										flags=display=seccfg;backup;flashimg;wipeingui
 /spmfw			emmc		/dev/block/by-name/spmfw										flags=display=spmfw;backup;flashimg;wipeingui
 /tee			emmc		/dev/block/by-name/tee											flags=display=tee;backup;flashimg;wipeingui
-/tranfs   emmc  /dev/block/by-name/tranfs flags=display="Tranfs";backup;flashimg;wipeingui
-/preloader_a  emmc /dev/block/by-name/preloader_a flags=display="Preloader_a";backup;flashimg;wipeingui
-/init_boot  emmc /dev/block/by-name/init_boot flags=display="init_boot";backup;flashimg;wipeingui
-/bootloader1 emmc /dev/block/by-name/bootloader1 flags=display="Bootloader1";backup;flashimg;wipeingui
-/bootloader2 emmc /dev/block/by-name/bootloader2 flags=display="Bootloader2";backup;flashimg;wipeingui
-/dtbo emmc /dev/block/by-name/dtbo flags=display="dtbo";backup;flashimg;wipeingui
-/lk emmc /dev/block/by-name/lk flags=display="Lk";backup;flashimg;wipeingui
-/tee emmc /dev/block/by-name/tee flags=display="Tee";backup;flashimg;wipeingui
-/tkv emmc /dev/block/by-name/tkv flags=display="Tkv";backup;flashimg;wipeingui
-/pi_img emmc /dev/block/by-name/pi_img flags=display="Pi_img";backup;flashimg;wipeingui
-/flashinfo emmc /dev/block/by-name/flashinfo flags=display="Flashinfo";backup;flashimg;wipeingui
+/tranfs       emmc                   /dev/block/by-name/tranfs                  flags=display="Tranfs";backup;flashimg;wipeingui
+/preloader_a             emmc          /dev/block/by-name/preloader_a          flags=display="Preloader_a";backup;flashimg;wipeingui
+/init_boot            emmc              /dev/block/by-name/init_boot              flags=display="init_boot";backup;flashimg;wipeingui
+/bootloader1         emmc        /dev/block/by-name/bootloader1           flags=display="Bootloader1";backup;flashimg;wipeingui
+/bootloader2           emmc        /dev/block/by-name/bootloader2            flags=display="Bootloader2";backup;flashimg;wipeingui
+/dtbo           emmc         /dev/block/by-name/dtbo               flags=display="dtbo";backup;flashimg;wipeingui
+/lk            emmc          /dev/block/by-name/lk                 flags=display="Lk";backup;flashimg;wipeingui
+/tee          emmc             /dev/block/by-name/tee                flags=display="Tee";backup;flashimg;wipeingui
+/tkv n      emmc              /dev/block/by-name/tkv                 flags=display="Tkv";backup;flashimg;wipeingui
+/pi_img        emmc       /dev/block/by-name/pi_img           flags=display="Pi_img";backup;flashimg;wipeingui
+/flashinfo      emmc          /dev/block/by-name/flashinfo         flags=display="Flashinfo";backup;flashimg;wipeingui
 
 /userdata_default             emmc           /dev/block/by-name/userdata                     flags=display="Userdata default";flashimg;backup=1;wipeingui
 
