@@ -188,6 +188,7 @@ BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 
 # Vendor modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
+TW_LOAD_VENDOR_MODULES := "flashlight.ko flashlights-aw36515.ko"
 
 # Version
 TW_DEVICE_VERSION := nino
@@ -207,9 +208,6 @@ OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
 # Maintainer specific settings
 OF_MAINTAINER := nino
 
-# Flashlight 
-TW_INCLUDE_FLASHLIGHT := true
-
 #SHRP-specific lines
 SHRP_PATH := device/itel/P661N
 SHRP_MAINTAINER := NINO
@@ -225,7 +223,7 @@ SHRP_DARK := true
 SHRP_EXPRESS_USE_DATA := true
 SHRP_FLASH := 1
 SHRP_CUSTOM_FLASHLIGHT := true
-SHRP_FONP := /proc/qcom_flash
+SHRP_FONP := /sys/class/torch/torch/torch_level
 SHRP_TORCH_MAX_BRIGHTNESS := 1
 SHRP_REC := /dev/block/platform/bootdevice/by-name/vendor_boot
 SHRP_NOTCH := true
