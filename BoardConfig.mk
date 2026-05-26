@@ -168,6 +168,9 @@ TW_EXCLUDE_APEX := true
 # Recovery-as-boot
 TW_HAS_NO_RECOVERY_PARTITION := true
 
+# Haptics
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+
 # Status bar
 TW_STATUS_ICONS_ALIGN := center
 TW_CUSTOM_CLOCK_POS := 40
@@ -188,6 +191,8 @@ BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 
 # Vendor modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
+TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
+TW_LOAD_VENDOR_MODULES := "flashlight.ko flashlights-aw36515.ko"
 
 # Version
 TW_DEVICE_VERSION := nino
