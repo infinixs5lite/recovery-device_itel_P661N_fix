@@ -49,8 +49,10 @@
 	export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
 	#Flashlight
+	export OF_FLASHLIGHT_ENABLE=1
 	export OF_FL_PATH1=/sys/class/torch/torch/torch_level
-
+    export OF_FL_PATH2="/sys/class/torch/torch/torch_level"
+	
 device_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 workspace_root="$(cd "${device_dir}/../../.." && pwd)"
 patch_file="${device_dir}/patches/0001-Add-regulator-vibrator-haptics-support.patch"
