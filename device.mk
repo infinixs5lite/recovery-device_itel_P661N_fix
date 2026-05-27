@@ -123,7 +123,3 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 PRODUCT_VENDOR_PROPERTIES += \
     log.tag=I \
     persist.log.tag=I
-
-# some OrangeFox-specific settings
-$(call inherit-product, $(LOCAL_PATH)/fox_P661N.mk)
-#
