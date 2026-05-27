@@ -124,5 +124,5 @@ PRODUCT_VENDOR_PROPERTIES += \
     log.tag=I \
     persist.log.tag=I
 
-# Inherit any OrangeFox-specific settings
+# Some OrangeFox-specific settings
 $(call inherit-product-if-exists, $(DEVICE_PATH)/fox_P661N.mk
