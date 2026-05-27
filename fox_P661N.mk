@@ -21,7 +21,10 @@
 # OrangeFox-specific settings #
 
 # flashlight
-OF_FL_PATH1 := /system/etc/flashlight
-
+OF_FLASHLIGHT_ENABLE := 1
+OF_FL_PATH1 := /sys/class/torch/torch/torch_level
+OF_FL_PATH2 := "/sys/class/torch/torch/torch_level"
+	
+device_dir="$(cd "$(dirname "${BASH_SOURCE
 # legacy services for battery
 OF_USE_LEGACY_BATTERY_SERVICES := 1
