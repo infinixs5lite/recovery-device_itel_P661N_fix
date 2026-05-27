@@ -22,7 +22,7 @@
 
 # flashlight
 OF_FLASHLIGHT_ENABLE := 1
-OF_FL_PATH1 := /sys/class/torch/torch/torch_level
+OF_FL_PATH1="/sys/class/torch/torch/torch_level"
 	
 # legacy services for battery
 OF_USE_LEGACY_BATTERY_SERVICES := 1
