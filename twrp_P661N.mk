@@ -21,6 +21,9 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from P661N device
 $(call inherit-product, device/itel/P661N/device.mk)
 
+# Inherit any OrangeFox-specific settings
+$(call inherit-product-if-exists, $(DEVICE_PATH)/fox_P661N.mk
+
 PRODUCT_DEVICE := P661N
 PRODUCT_NAME := twrp_P661N
 PRODUCT_BRAND := Itel
