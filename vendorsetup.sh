@@ -21,10 +21,6 @@
 	export LC_ALL="C.UTF-8"
 	export ALLOW_MISSING_DEPENDENCIES=true
 
-	# flashlight
-    export OF_FLASHLIGHT_ENABLE=1
-	export OF_FL_PATH1="/system/flashlight"
-
     #OFR build settings & info
 	export TARGET_DEVICE_ALT="P661N"
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
