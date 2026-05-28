@@ -191,7 +191,7 @@ TW_LOAD_VENDOR_BOOT_MODULES := true
 TW_LOAD_VENDOR_MODULES := "flashlight.ko flashlights-aw36515.ko"
 
 # Version
-TW_DEVICE_VERSION := R
+TW_DEVICE_VERSION := nino
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 
 # OrangeFox settings
@@ -218,11 +218,6 @@ OF_DISPLAY_FORMAT_FILESYSTEMS_DEBUG_INFO := 1
 OF_DISABLE_OTA_MENU := 1
 OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
 OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
-
-# flashlight
-OF_FLASHLIGHT_ENABLE=1
-OF_FL_PATH1=/sys/class/torch/torch/torch_level
-OF_FL_PATH2=/system/etc/flashlight
 
 # Maintainer specific settings
 OF_MAINTAINER := NINO
