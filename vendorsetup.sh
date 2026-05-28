@@ -33,11 +33,6 @@
 	export FOX_SETTINGS_ROOT_DIRECTORY=/persist/OFRP
 	export FOX_RESET_SETTINGS=1
     export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
-  
-	# flashlight
-   export OF_FLASHLIGHT_ENABLE=1
-   export OF_FL_PATH1=/sys/class/torch/torch/torch_level
-   export OF_FL_PATH1=/system/etc/flashlight
 
 	#OFR binary files
 	export FOX_USE_BASH_SHELL=1
