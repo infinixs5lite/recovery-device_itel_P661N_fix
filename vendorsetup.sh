@@ -21,6 +21,10 @@
 	export LC_ALL="C.UTF-8"
 	export ALLOW_MISSING_DEPENDENCIES=true
 
+    # Flashlight
+	export OF_FLASHLIGHT_ENABLE=1
+	export OF_FL_PATH1="/sys/class/torch/torch/torch_level"
+	
     #OFR build settings & info
 	export TARGET_DEVICE_ALT="P661N"
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
