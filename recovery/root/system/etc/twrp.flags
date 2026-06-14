@@ -54,7 +54,7 @@
 /dtbo           emmc         /dev/block/by-name/dtbo               flags=display="dtbo";backup;flashimg;wipeingui
 /lk            emmc          /dev/block/by-name/lk                 flags=display="Lk";backup;flashimg;wipeingui
 /tee          emmc             /dev/block/by-name/tee                flags=display="Tee";backup;flashimg;wipeingui
-/tkv n      emmc              /dev/block/by-name/tkv                 flags=display="Tkv";backup;flashimg;wipeingui
+/tkv      emmc              /dev/block/by-name/tkv                 flags=display="Tkv";backup;flashimg;wipeingui
 /pi_img        emmc       /dev/block/by-name/pi_img           flags=display="Pi_img";backup;flashimg;wipeingui
 /flashinfo      emmc          /dev/block/by-name/flashinfo         flags=display="Flashinfo";backup;flashimg;wipeingui
 
