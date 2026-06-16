@@ -24,8 +24,11 @@
     # Flashlight
 	export OF_FLASHLIGHT_ENABLE=1
 	export OF_FL_PATH1="/sys/class/torch/torch/torch_level"
-	
-    #OFR build settings & info
+ 
+    # When issue wigh rdusk
+	export OF_RECOVERY_AB_FULL_REFLASH_RAMDISK=1
+    
+	#OFR build settings & info
 	export TARGET_DEVICE_ALT="P661N"
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
