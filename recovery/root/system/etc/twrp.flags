@@ -12,9 +12,9 @@
 /init_boot			emmc		/dev/block/by-name/init_boot											flags=display=init_boot;slotselect;backup;flashimg;wipeingui
 
 # Firmware
-/dtbo			emmc		/dev/block/by-name/dtbo											flags=display=dtbo;slotselect;backup;flashimg;wipeingui
+/dtbo			  emmc		 /dev/block/by-name/dtbo											flags=display=dtbo;slotselect;backup;flashimg;wipeingui
 /metadata		ext4		/dev/block/by-name/metadata										flags=display=metadata;backup
-/misc			emmc		/dev/block/by-name/misc											flags=display=misc;backup;flashimg;wipeingui
+/misc		  	emmc		/dev/block/by-name/misc											 flags=display=misc;backup;flashimg;wipeingui
 
 # Sensitive Data
 /nvcfg			ext4		/dev/block/by-name/nvcfg										flags=display=nvcfg;backup;flashimg;wipeingui
@@ -48,13 +48,14 @@
 /tee			emmc		/dev/block/by-name/tee											flags=display=tee;backup;flashimg;wipeingui
 /tranfs       emmc                   /dev/block/by-name/tranfs                  flags=display="Tranfs";backup;flashimg;wipeingui
 /preloader_a             emmc          /dev/block/by-name/preloader_a          flags=display="Preloader_a";backup;flashimg;wipeingui
-/init_boot            emmc              /dev/block/by-name/init_boot              flags=display="init_boot";backup;flashimg;wipeingui
+/init_boot_a             emmc          /dev/block/by-name/init_boot_a              flags=display="init_boot_a";backup;flashimg;wipeingui
+/init_boot_b             emmc          /dev/block/by-name/init_boot_b              flags=display="init_boot_b";backup;flashimg;wipeingui
 /bootloader1         emmc        /dev/block/by-name/bootloader1           flags=display="Bootloader1";backup;flashimg;wipeingui
 /bootloader2           emmc        /dev/block/by-name/bootloader2            flags=display="Bootloader2";backup;flashimg;wipeingui
 /dtbo           emmc         /dev/block/by-name/dtbo               flags=display="dtbo";backup;flashimg;wipeingui
 /lk            emmc          /dev/block/by-name/lk                 flags=display="Lk";backup;flashimg;wipeingui
 /tee          emmc             /dev/block/by-name/tee                flags=display="Tee";backup;flashimg;wipeingui
-/tkv      emmc              /dev/block/by-name/tkv                 flags=display="Tkv";backup;flashimg;wipeingui
+/tkv    emmc              /dev/block/by-name/tkv                 flags=display="Tkv";backup;flashimg;wipeingui
 /pi_img        emmc       /dev/block/by-name/pi_img           flags=display="Pi_img";backup;flashimg;wipeingui
 /flashinfo      emmc          /dev/block/by-name/flashinfo         flags=display="Flashinfo";backup;flashimg;wipeingui
 
@@ -64,8 +65,13 @@
 /external_sd		auto		/dev/block/mmcblk1p1				/dev/block/mmcblk0p1					flags=display="Micro SD Card";storage;wipeingui;removable;backup=0
 /usb-otg                  auto      /dev/block/sdd1   /dev/block/sdd                 flags=display="USB OTG";storage;wipeingui;removable
 
-# Flashable logical partitions
-/system_image	       emmc		/dev/block/mapper/system									flags=display="system image";backup;";slotselect;backup;flashimg;wipeingui
-/vendor_image	       emmc		/dev/block/mapper/vendor									flags=display="vendor image";slotselect;backup;flashimg;wipeingui
-/system_ext_image      emmc		/dev/block/mapper/system_ext								        flags=display="System_EXT image";slotselect;backup;flashimg;wipeingui
-/product_image         emmc             /dev/block/mapper/product									flags=display="Product image";slotselect;backup;flashimg;wipeingui
+# Images
+/super          	 emmc    	/dev/block/by-name/super            flags=backup=1;display="Super_image";flashimg=1;wipeingui=1
+/system_image	    emmc  	/dev/block/mapper/system                flags=backup=1;flashimg=1;display="System Image";wipeingui=1;slotselect
+/system     		     ext4	     /dev/block/mapper/system 
+/vendor_image	    emmc  	/dev/block/mapper/vendor                flags=backup=1;flashimg=1;display="Vendor Image";wipeingui=1;slotselect
+/vendor              ext4      /dev/block/mapper/vendor 
+/product_image	    emmc  	/dev/block/mapper/product               flags=backup=1;flashimg=1;display="Product Image";wipeingui=1;slotselect
+/product             ext4      /dev/block/mapper/product
+/system_ext_image	    emmc  	/dev/block/mapper/system_ext              flags=backup=1;flashimg=1;display="System_ext Image";wipeingui=1;slotselect
+/system_ext            ext4      /dev/block/mapper/system_ext
