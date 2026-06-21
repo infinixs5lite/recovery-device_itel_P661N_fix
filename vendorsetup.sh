@@ -71,3 +71,14 @@ else
 fi
 
 unset device_dir workspace_root patch_file
+
+# Patches
+RET=0
+cd bootable/recovery
+git apply ../../device/itel/P661N/patches/0001-Add-regulator-vibrator-haptics-support.patch.patch > /dev/null 2>&1 || RET=$?
+cd ../../
+if [ $RET -ne 0 ];then
+    echo "ERROR: Patch is not applied! Maybe it's already patched?"
+else
+    echo "OK: All patched"
+fi
