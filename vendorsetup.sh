@@ -1,60 +1,51 @@
 #!/bin/bash
-#
-#	This file is part of the OrangeFox Recovery Project
-# 	Copyright (C) 2020-2026 The OrangeFox Recovery Project
-#
-#	OrangeFox is free software: you can redistribute it and/or modify
-#	it under the terms of the GNU General Public License as published by
-#	the Free Software Foundation, either version 3 of the License, or
-#	any later version.
-#
-#	OrangeFox is distributed in the hope that it will be useful,
-#	but WITHOUT ANY WARRANTY; without even the implied warranty of
-#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#	GNU General Public License for more details.
-#
-# 	This software is released under GPL version 3 or any later version.
-#	See <http://www.gnu.org/licenses/>.
-#
-# 	Please maintain this if you use this script or any part of it
-#
-	export LC_ALL="C.UTF-8"
-	export ALLOW_MISSING_DEPENDENCIES=true
 
-    # Flashlight
-	export OF_FLASHLIGHT_ENABLE=1
-	export OF_FL_PATH1="/sys/class/torch/torch/torch_level"
- 
-    # When issue wigh rdusk
-	export OF_RECOVERY_AB_FULL_REFLASH_RAMDISK=1
-    
-	#OFR build settings & info
-	export TARGET_DEVICE_ALT="P661N"
-	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-	export FOX_VENDOR_BOOT_RECOVERY_FULL_REFLASH=1
-	export FOX_VENDOR_BOOT_RECOVERY=1
-	export FOX_DELETE_MAGISK_ADDON=1
-	export FOX_DELETE_AROMAFM=1
-	export FOX_ENABLE_APP_MANAGER=1
-	export FOX_SETTINGS_ROOT_DIRECTORY=/persist/OFRP
-	export FOX_RESET_SETTINGS=1
-    export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
+export OF_DISABLE_OTA_MENU=1
+export FOX_AB_DEVICE=1
+export FOX_VIRTUAL_AB_DEVICE=1
+export OF_DEFAULT_KEYMASTER_VERSION=4.1
+export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
+export OF_MAINTAINER="nino"
+export FOX_VARIANT="R12_nino"
+export OF_FLASHLIGHT_ENABLE=1
+export OF_FL_PATH1="/sys/class/torch/torch/torch_level"
 
-	#OFR binary files
-	export FOX_USE_BASH_SHELL=1
-	export FOX_USE_NANO_EDITOR=1
-	export FOX_USE_TAR_BINARY=1
-	export FOX_USE_SED_BINARY=1
-	export FOX_USE_XZ_UTILS=1
-	export FOX_ASH_IS_BASH=1
-	export OF_ENABLE_LPTOOLS=1
+export FOX_USE_BASH_SHELL=1
+export FOX_USE_NANO_EDITOR=1
+export FOX_USE_TAR_BINARY=1
+export FOX_USE_SED_BINARY=1
+export FOX_USE_XZ_UTILS=1
+export FOX_ASH_IS_BASH=1
+export OF_ENABLE_LPTOOLS=1
+export FOX_DELETE_MAGISK_ADDON=1
+export FOX_DELETE_AROMAFM=1
+export FOX_ENABLE_APP_MANAGER=1
+export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
-	#OTA
-	export FOX_AB_DEVICE=1
-	export FOX_VIRTUAL_AB_DEVICE=1
-	export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
-	
+export FOX_USE_DATA_RECOVERY_FOR_SETTINGS=1
+
+export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
+
+export OF_USE_LZ4_COMPRESSION=true
+
+export OF_SCREEN_H=2400
+export OF_STATUS_H=95
+export OF_STATUS_INDENT_LEFT=48
+export OF_STATUS_INDENT_RIGHT=48
+export OF_ALLOW_DISABLE_NAVBAR=0
+export OF_CLOCK_POS=1
+
+export USE_CCACHE=1
+export CCACHE_EXEC=/usr/bin/ccache
+export CCACHE_MAXSIZE="5G"
+export CCACHE_DIR=".ccache"
+
+if [ ! -d ${CCACHE_DIR} ]; then
+  mkdir $CCACHE_DIR
+fi
+
+export LC_ALL="C"
+
 device_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 workspace_root="$(cd "${device_dir}/../../.." && pwd)"
 patch_file="${device_dir}/patches/0001-Add-regulator-vibrator-haptics-support.patch"
