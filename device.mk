@@ -67,12 +67,11 @@ PRODUCT_PACKAGES_DEBUG += \
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
-    checkpoint_gc
-
-PRODUCT_PACKAGES += \
+    cppreopts.sh \
+    checkpoint_gc \
     update_engine \
-    update_engine_sideload \
-    update_verifier
+    update_verifier \
+    update_engine_sideload
 
 # Vibrator modules
 TARGET_RECOVERY_DEVICE_MODULES += \
@@ -83,6 +82,15 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 31
+
+# Update engine
+PRODUCT_PACKAGES += \
+    update_engine \
+    update_engine_sideload \
+    update_verifier
+
+PRODUCT_PACKAGES_DEBUG += \
+    update_engine_client
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
