@@ -179,6 +179,13 @@ TW_CUSTOM_CPU_POS := 270
 # FastbootD
 TW_INCLUDE_FASTBOOTD := true
 
+# Side load 
+TW_INCLUDE_ADB_SIDELOAD := true
+
+# Mtp
+TW_ENABLE_MTP := true
+TW_INCLUDE_MTP_IN_SIDELOAD := true
+
 # USB Configuration
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 
