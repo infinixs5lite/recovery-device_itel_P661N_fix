@@ -40,19 +40,23 @@ AB_OTA_POSTINSTALL_CONFIG += \
 ENABLE_VIRTUAL_AB := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch.mk)
 
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    cppreopts.sh
+
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-service \
     android.hardware.boot@1.2-impl \
     android.hardware.boot@1.2-impl.recovery
 
+PRODUCT_PACKAGES_DEBUG += \
+    bootctl
+
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
-
-PRODUCT_PACKAGES_DEBUG += \
-    bootctrl
 
 PRODUCT_PACKAGES += \
     bootctrl.mt6833 \
@@ -62,16 +66,14 @@ PRODUCT_PACKAGES += \
     create_pl_dev \
     create_pl_dev.recovery
 
+# Update engine
+PRODUCT_PACKAGES += \
+    update_engine \
+    update_engine_sideload \
+    update_verifier
+
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
-
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh \
-    checkpoint_gc \
-    update_engine \
-    update_verifier \
-    update_engine_sideload
 
 # Vibrator modules
 TARGET_RECOVERY_DEVICE_MODULES += \
@@ -82,12 +84,6 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 31
-
-# Update engine
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_engine_sideload \
-    update_verifier
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
