@@ -11,25 +11,39 @@
 /vbmeta_vendor		emmc		/dev/block/by-name/vbmeta_vendor									flags=display=vbmeta_vendor;slotselect;backup;flashimg;wipeingui
 /init_boot			emmc		/dev/block/by-name/init_boot											flags=display=init_boot;slotselect;backup;flashimg;wipeingui
 
-# Firmware
-/dtbo			  emmc		 /dev/block/by-name/dtbo											flags=display=dtbo;slotselect;backup;flashimg;wipeingui
 /metadata		ext4		/dev/block/by-name/metadata										flags=display=metadata;backup
-/misc		  	emmc		/dev/block/by-name/misc											 flags=display=misc;backup;flashimg;wipeingui
 
 # Sensitive Data
 /nvcfg			ext4		/dev/block/by-name/nvcfg										flags=display=nvcfg;backup;flashimg;wipeingui
 /persist		emmc		/dev/block/by-name/persist										flags=display=persist;backup;flashimg;wipeingui
 /frp			emmc		/dev/block/by-name/frp											flags=display=frp;backup;flashimg;wipeingui
+/persist		ext4		/dev/block/by-name/persist										flags=display=persist;backup;flashimg;wipeingui
+/metadata		ext4		/dev/block/by-name/metadata										flags=display=metadata;backup
 
 # IMEI and modem related
 /nvdata			emmc		/dev/block/by-name/nvdata										flags=display=nvdata;backup;flashimg;wipeingui
-/protect_1		ext4		/dev/block/by-name/protect1										flags=display=protect_1;backup;flashimg;wipeingui
-/protect_2		ext4		/dev/block/by-name/protect2										flags=display=protect_2;backup;flashimg;wipeingui
+/protect1		ext4		/dev/block/by-name/protect1										flags=display=protect1;backup;flashimg;wipeing
+/protect2		ext4		/dev/block/by-name/protect1										flags=display=protect2;backup;flashimg;wipeing
 /nvram			emmc		/dev/block/by-name/nvram										flags=display=nvram;backup;flashimg;wipeingui
 /proinfo		emmc		/dev/block/by-name/proinfo										flags=display=proinfo;backup;flashimg;wipeingui
 
 # Standard MediaTeks's partitions
+/boot_para       emmc                   /dev/block/by-name/boot_para                flags=display="boot_para";backup;flashimg;wipeingui
+/expdb       emmc                   /dev/block/by-name/expdb                  flags=display="Expdb";backup;flashimg;wipeingui
+/mcupm       emmc                   /dev/block/by-name/mcupm                  flags=display="mcupm";backup;flashimg;wipeingui
+/misc       emmc                   /dev/block/by-name/misc                  flags=display="misc";backup;flashimg;wipeingui
+/nvcfg       emmc                   /dev/block/by-name/nvcfg                  flags=display="nvcfg";backup;flashimg;wipeingui
+/persist       emmc                   /dev/block/by-name/persist                  flags=display="persist";backup;flashimg;wipeingui
+/protect1       emmc                   /dev/block/by-name/protect1                  flags=display="protect1";backup;flashimg;wipeingui
+/protect2       emmc                   /dev/block/by-name/protect2                  flags=display="protect2";backup;flashimg;wipeingui
+/spmfw       emmc                   /dev/block/by-name/spmfw                  flags=display="spmfw";backup;flashimg;wipeingui
+/sec1       emmc                   /dev/block/by-name/sec1                  flags=display="sec1";backup;flashimg;wipeingui
+/frp       emmc                   /dev/block/by-name/frp                  flags=display="frp";backup;flashimg;wipeingui
+/nvdata       emmc                   /dev/block/by-name/nvdata                  flags=display="nvdata";backup;flashimg;wipeingui
+/nvram       emmc                   /dev/block/by-name/nvram                  flags=display="nvram";backup;flashimg;wipeingui
 /tkv			emmc		/dev/block/by-name/tkv											flags=display=tkv;backup;flashimg;wipeingui
+/preloader_ufs       emmc                   /dev/block/by-name/preloader_ufs                  flags=display="preloader_ufs";backup;flashimg;wipeingui
+/preloader_emmc       emmc                   /dev/block/by-name/preloader_emmc                  flags=display="preloader_emmc";backup;flashimg;wipeingui
 /gz			emmc		/dev/block/by-name/gz											flags=display=gz;backup;flashimg;wipeingui
 /mcupm			emmc		/dev/block/by-name/mcupm										flags=display=mcupm;backup;flashimg;wipeingui
 /sspm			emmc		/dev/block/by-name/sspm											flags=display=sspm;backup;flashimg;wipeingui
@@ -68,11 +82,11 @@
 # Images
 /super          	 emmc    	/dev/block/by-name/super            flags=backup=1;display="Super_image";flashimg=1;wipeingui=1
 /system_image	    emmc  	/dev/block/mapper/system                flags=backup=1;flashimg=1;display="System Image";wipeingui=1;slotselect
-/system     		     ext4	     /dev/block/mapper/system 
+/system     		     ext4	     /dev/block/mapper/system            flags=backup=1;flashimg=1;display="System";wipeingui=1;slotselec
 /vendor_image	    emmc  	/dev/block/mapper/vendor                flags=backup=1;flashimg=1;display="Vendor Image";wipeingui=1;slotselect
-/vendor              ext4      /dev/block/mapper/vendor 
+/vendor              ext4      /dev/block/mapper/vendor           flags=backup=1;flashimg=1;display="Vendor";wipeingui=1;slotselect
 /product_image	    emmc  	/dev/block/mapper/product               flags=backup=1;flashimg=1;display="Product Image";wipeingui=1;slotselect
-/product             ext4      /dev/block/mapper/product
+/product             ext4      /dev/block/mapper/product            flags=backup=1;flashimg=1;display="Product";wipeingui=1;slotselect
 /system_ext_image	    emmc  	/dev/block/mapper/system_ext              flags=backup=1;flashimg=1;display="System_ext Image";wipeingui=1;slotselect
-/system_ext            ext4      /dev/block/mapper/system_ext
+/system_ext            ext4      /dev/block/mapper/system_ext         flags=backup=1;flashimg=1;display="System_ext";wipeingui=1;slotselect
  
