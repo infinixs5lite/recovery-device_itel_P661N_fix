@@ -27,7 +27,7 @@ export FOX_ENABLE_APP_MANAGER=1
 export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
 # List of numbers before scrolling
-export FOX_OPTIONS_LIST_NUM=9
+export FOX_OPTIONS_LIST_NUM=12
 
 # Vendor Boot recovery
 export FOX_VENDOR_BOOT_RECOVERY=1
