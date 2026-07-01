@@ -24,12 +24,16 @@ export FOX_DELETE_AROMAFM=1
 export FOX_ENABLE_APP_MANAGER=1
 export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
+# Flashlight & LEDs
+export OF_FL_PATH1="/tmp/of_torch"
+OF_USE_GREEN_LED=0
+
 # Flashlight 
 export OF_FLASHLIGHT_ENABLE=1
-export OF_FL_PATH1="/sys/class/torch/torch/torch_level"
-export OF_FL_PATH2="/sys/devices/virtual/flashlight_core/flashlight/flashlight_torch"
-export OF_FL_PATH3="/sys/class/flashlight_core/flashlight/flashlight_torch"
-export OF_FL_PATH4="/sys/class/torch/torch/torch_level"
+export OF_FL_PATH2="/sys/class/torch/torch/torch_level"
+export OF_FL_PATH3="/sys/devices/virtual/flashlight_core/flashlight/flashlight_torch"
+export OF_FL_PATH4="/sys/class/flashlight_core/flashlight/flashlight_torch"
+export OF_FL_PATH5="/sys/class/torch/torch/torch_level"
 
 # List of numbers before scrolling
 export FOX_OPTIONS_LIST_NUM=12
