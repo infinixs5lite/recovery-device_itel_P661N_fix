@@ -25,8 +25,9 @@ export FOX_ENABLE_APP_MANAGER=1
 export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
 # Flashlight & LEDs
-export OF_FL_PATH1="/tmp/of_torch"
-OF_USE_GREEN_LED=0
+export OF_FL_PATH="/tmp/of_torch"
+export OF_FL_PATH1="/tmp/flashlight"
+export OF_USE_GREEN_LED=0
 
 # Flashlight 
 export OF_FLASHLIGHT_ENABLE=1
