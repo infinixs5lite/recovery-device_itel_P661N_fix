@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git clone https://github.com/mt6833-dev-transsion/android_device_itel_P661N-kernel.git/ -b /main
+
 export OF_DISABLE_OTA_MENU=1
 export FOX_AB_DEVICE=1
 export FOX_VIRTUAL_AB_DEVICE=1
