@@ -183,12 +183,12 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_USB_STORAGE := true
 
 # Vendor boot
-#BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
+BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 
 # Vendor modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
-TW_LOAD_VENDOR_MODULES := "flashlight.ko flashlights-aw36515.ko v4l2-flash-led-class.ko"
+TW_LOAD_VENDOR_MODULES := "flashlight.ko flashlights-aw36515.ko"
 
 # Version
 TW_DEVICE_VERSION := nino
