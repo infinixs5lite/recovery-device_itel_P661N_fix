@@ -55,6 +55,17 @@ export OF_USE_LZ4_COMPRESSION=true
 ## export FOX_RESET_SETTINGS=0
 ## export FOX_INSTALLER_DEBUG_MODE=1
 
+F=$(find "device" -name "P661N")
+	# 修改启动画面背景色为#ffffff
+	\cp -fp bootable/recovery/gui/theme/portrait_hdpi/splash.xml "$F"/recovery/root/twres/splash.xml
+	sed -i 's/background color="#D34E38"/background color="#538db6"/g' "$F"/recovery/root/twres/splash.xml
+	sed -i 's/fill color="#FF8038"/fill color="#538db6"/g' "$F"/recovery/root/twres/splash.xml
+    sed -i 's/OrangeFox/Kamchoyun/g' "$F"/recovery/root/twres/splash.xml
+	sed -i 's/font resource="of" color="#ffffff"/font resource="of" color="#538db6"/g' "$F"/recovery/root/twres/splash.xml
+	sed -i 's/font resource="recovery" color="#ffffff"/font resource="recovery" color="#538db6"/g' "$F"/recovery/root/twres/splash.xml
+	
+	echo -e "\x1b[96matom: 当你看到这个消息的时候，所有的OrangeFox Var已经添加完毕！\x1b[m"
+	
 export OF_SCREEN_H=2400
 export OF_STATUS_H=95
 export OF_STATUS_INDENT_LEFT=48
