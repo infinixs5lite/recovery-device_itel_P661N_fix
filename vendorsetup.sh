@@ -41,10 +41,12 @@ export OF_FL_PATH5="/sys/class/torch/torch/torch_level"
 # List of numbers before scrolling
 export FOX_OPTIONS_LIST_NUM=12
 
-# Vendor Boot recovery
-export FOX_VENDOR_BOOT_RECOVERY=1
+# vendor,system、vendor_boot
 export FOX_RECOVERY_VENDOR_BOOT_PARTITION="/dev/block/by-name/vendor_boot"
-
+	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+	export FOX_RECOVERY_BOOT_PARTITION="/dev/block/by-name/boot"
+	
 export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
 
 export OF_USE_LZ4_COMPRESSION=true
