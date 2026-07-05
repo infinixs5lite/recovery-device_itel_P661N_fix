@@ -41,7 +41,8 @@
 /frp       emmc                   /dev/block/by-name/frp                  flags=display="frp";backup;flashimg;wipeingui
 /nvdata       emmc                   /dev/block/by-name/nvdata                  flags=display="nvdata";backup;flashimg;wipeingui
 /nvram       emmc                   /dev/block/by-name/nvram                  flags=display="nvram";backup;flashimg;wipeingui
-/tkv			emmc		/dev/block/by-name/tkv											flags=display=tkv;backup;flashimg;wipeingui
+/tkv_a       emmc                   /dev/block/by-name/tkv_a                  flags=display="Tkv_a";backup;flashimg;wipeingui
+/tkv_b       emmc                   /dev/block/by-name/tkv_b                  flags=display="Tkv_b";backup;flashimg;wipeingui
 /preloader_ufs       emmc                   /dev/block/by-name/preloader_ufs                  flags=display="preloader_ufs";backup;flashimg;wipeingui
 /preloader_emmc       emmc                   /dev/block/by-name/preloader_emmc                  flags=display="preloader_emmc";backup;flashimg;wipeingui
 /gz			emmc		/dev/block/by-name/gz											flags=display=gz;backup;flashimg;wipeingui
@@ -69,7 +70,6 @@
 /dtbo           emmc         /dev/block/by-name/dtbo               flags=display="dtbo";backup;flashimg;wipeingui
 /lk            emmc          /dev/block/by-name/lk                 flags=display="Lk";backup;flashimg;wipeingui
 /tee          emmc             /dev/block/by-name/tee                flags=display="Tee";backup;flashimg;wipeingui
-/tkv     emmc              /dev/block/by-name/tkv                 flags=display="Tkv";backup;flashimg;wipeingui
 /pi_img        emmc       /dev/block/by-name/pi_img           flags=display="Pi_img";backup;flashimg;wipeingui
 /flashinfo      emmc          /dev/block/by-name/flashinfo         flags=display="Flashinfo";backup;flashimg;wipeingui
 
