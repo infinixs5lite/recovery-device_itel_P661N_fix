@@ -29,12 +29,6 @@ PRODUCT_MANUFACTURER := ITEL
 
 PRODUCT_GMS_CLIENTID_BASE := android-transsion
 
-# Hide Reflash TWRP & FUSE passthrough
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.twrp.vendor_boot=true \
-    persist.sys.fuse.passthrough.enable=true
-
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="vnd_p661n_h334-user 12 SP1A.210812.016 928046 release-keys"
 
