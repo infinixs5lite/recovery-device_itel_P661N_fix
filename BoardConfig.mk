@@ -6,8 +6,8 @@
 
 DEVICE_PATH := device/itel/P661N
 
-# Inherit from mt6833-common
-include device/transsion/mt6833-common/BoardConfigCommon.mk
+# Inherit from common-mt6833
+include transsion/device/common-mt6833/BoardConfigCommon.mk
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := P661N
