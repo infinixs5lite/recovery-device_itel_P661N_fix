@@ -12,9 +12,6 @@ include device/transsion/mt6833-common/BoardConfigCommon.mk
 # Assert
 TARGET_OTA_ASSERT_DEVICE := P661N
 
-# Vendor modules
-TW_LOAD_VENDOR_BOOT_MODULES := true
-
 # Version
 TW_DEVICE_VERSION := NINO
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
