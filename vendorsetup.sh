@@ -31,13 +31,6 @@ export OF_FL_PATH="/tmp/of_torch"
 export OF_FL_PATH1="/tmp/flashlight"
 export OF_USE_GREEN_LED=0
 
-# Flashlight 
-export OF_FLASHLIGHT_ENABLE=1
-export OF_FL_PATH2="/sys/class/torch/torch/torch_level"
-export OF_FL_PATH3="/sys/devices/virtual/flashlight_core/flashlight/flashlight_torch"
-export OF_FL_PATH4="/sys/class/flashlight_core/flashlight/flashlight_torch"
-export OF_FL_PATH5="/sys/class/torch/torch/torch_level"
-
 # List of numbers before scrolling
 export FOX_OPTIONS_LIST_NUM=12
 
@@ -82,41 +75,47 @@ if [ ! -d ${CCACHE_DIR} ]; then
   mkdir $CCACHE_DIR
 fi
 
-export LC_ALL="C"
+export LC_ALL="C.UTF-8"
+	export ALLOW_MISSING_DEPENDENCIES=true
+
+#OTA
+	export FOX_AB_DEVICE=1
+	export FOX_VIRTUAL_AB_DEVICE=1
+	export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
 device_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 workspace_root="$(cd "${device_dir}/../../.." && pwd)"
-patch_file="${device_dir}/patches/0001-Add-regulator-vibrator-haptics-support.patch"
+patch_files=(
+	"${device_dir}/patches/0001-Add-regulator-vibrator-haptics-support.patch"
+	"${device_dir}/patches/0002-Support-direct-file-flashlight-paths.patch"
+)
 
-if [ ! -f "${patch_file}" ]; then
-	echo "[P661N] Missing patch: ${patch_file}"
-elif ! command -v patch >/dev/null 2>&1; then
+if ! command -v patch >/dev/null 2>&1; then
 	echo "[P661N] Missing required command: patch"
-elif (
-	cd "${workspace_root}" &&
-	patch -p1 -N --dry-run --silent < "${patch_file}" >/dev/null 2>&1
-); then
-	if (
-		cd "${workspace_root}" &&
-		patch -p1 -N --silent < "${patch_file}" >/dev/null 2>&1
-	); then
-		echo "[P661N] Applied haptics patch"
-	else
-		echo "[P661N] Failed to apply haptics patch"
-	fi
 else
-	echo "[P661N] Haptics patch already applied or not applicable"
+	for patch_file in "${patch_files[@]}"; do
+		patch_name="$(basename "${patch_file}")"
+		if [ ! -f "${patch_file}" ]; then
+			echo "[P661N] Missing patch: ${patch_file}"
+		elif (
+			cd "${workspace_root}" &&
+			patch -p1 -N --dry-run --silent < "${patch_file}" >/dev/null 2>&1
+		); then
+			if (
+				cd "${workspace_root}" &&
+				patch -p1 -N --silent < "${patch_file}" >/dev/null 2>&1
+			); then
+				echo "[P661N] Applied patch: ${patch_name}"
+			else
+				echo "[P661N] Failed to apply patch: ${patch_name}"
+			fi
+		else
+			echo "[P661N] Patch already applied or not applicable: ${patch_name}"
+		fi
+	done
 fi
 
-unset device_dir workspace_root patch_file
+unset device_dir workspace_root patch_files patch_file patch_name
 
-# Patches
-RET=0
-cd bootable/recovery
-git apply ../../device/itel/P661N/patches/0001-Add-regulator-vibrator-haptics-support.patch.patch > /dev/null 2>&1 || RET=$?
-cd ../../
-if [ $RET -ne 0 ];then
-    echo "ERROR: Patch is not applied! Maybe it's already patched?"
-else
-    echo "OK: All patched"
-fi
+
+
