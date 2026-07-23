@@ -26,10 +26,7 @@ export FOX_DELETE_AROMAFM=1
 export FOX_ENABLE_APP_MANAGER=1
 export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
-# Flashlight & LEDs
-export OF_FL_PATH="/tmp/of_torch"
-export OF_FL_PATH1="/tmp/flashlight"
-export OF_USE_GREEN_LED=0
+export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
 
 # List of numbers before scrolling
 export FOX_OPTIONS_LIST_NUM=12
@@ -39,6 +36,9 @@ export FOX_RECOVERY_VENDOR_BOOT_PARTITION="/dev/block/by-name/vendor_boot"
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 	export FOX_RECOVERY_BOOT_PARTITION="/dev/block/by-name/boot"
+
+# Making sure recovery partition exist
+export OF_RECOVERY_AB_FULL_REFLASH_RAMDIS=1
 	
 export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
 
