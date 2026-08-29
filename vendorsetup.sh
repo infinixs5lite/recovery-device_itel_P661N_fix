@@ -1,27 +1,24 @@
-#!/bin/bash
+TFILE=$PWD/out/hapticspath.patched
+[ ! -d "out" ]&& mkdir -p out
+RET=0
+REVERSE=0
 
-device_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-workspace_root="$(cd "${device_dir}/../../.." && pwd)"
-patch_file="${device_dir}/patches/0001-Add-regulator-vibrator-haptics-support.patch"
+cd bootable/recovery
+git apply --reverse --check ../../device/itel/P661N/patches/0001-Change-haptics-activation-file-path.patch || REVERSE=$?
+cd ../../
 
-if [ ! -f "${patch_file}" ]; then
-	echo "[P661N] Missing patch: ${patch_file}"
-elif ! command -v patch >/dev/null 2>&1; then
-	echo "[P661N] Missing required command: patch"
-elif (
-	cd "${workspace_root}" &&
-	patch -p1 -N --dry-run --silent < "${patch_file}" >/dev/null 2>&1
-); then
-	if (
-		cd "${workspace_root}" &&
-		patch -p1 -N --silent < "${patch_file}" >/dev/null 2>&1
-	); then
-		echo "[P661N] Applied haptics patch"
-	else
-		echo "[P661N] Failed to apply haptics patch"
-	fi
+if [ -f "$TFILE" ];then
+    echo "haptics path patched already, skipping"
+elif [ $REVERSE -eq 0 ]; then
+    echo "$TFILE is not found but git is able to reverse haptics path patch, assuming it's already patched, skipping"
 else
-	echo "[P661N] Haptics patch already applied or not applicable"
+    cd bootable/recovery
+    git apply ../../device/itel/P661N/patches/0001-Change-haptics-activation-file-path.patch || RET=$?
+    cd ../../
+    if [ $RET -ne 0 ];then
+        echo "ERROR: minuitwrp/events.cpp could not be patched! Vibration in TWRP will not work."
+    else
+        echo "OK: minuitwrp/events.cpp patched"
+        touch $TFILE
+    fi
 fi
-
-unset device_dir workspace_root patch_file
