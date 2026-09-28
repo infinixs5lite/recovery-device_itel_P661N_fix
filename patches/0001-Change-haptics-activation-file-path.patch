@@ -11,8 +11,8 @@ https://github.com/TeamWin/android_bootable_recovery/issues/321
 
 Change-Id: I8b06ac64a1c7f2bb79a1295c505950afbf46a3d2
 ---
- minuitwrp/events.cpp | 6 ++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ minuitwrp/events.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/minuitwrp/events.cpp b/minuitwrp/events.cpp
 index b5e5a14..c5b7dc3 100644
@@ -21,11 +21,9 @@ index b5e5a14..c5b7dc3 100644
 @@ -60,8 +60,8 @@ static std::atomic_int vib_on_count = 0;
  #define VIBRATOR_TIMEOUT_FILE	"/sys/class/timed_output/vibrator/enable"
  #define VIBRATOR_TIME_MS    50
-
--#define LEDS_HAPTICS_DURATION_FILE	"/sys/class/leds/vibrator_double/duration"
--#define LEDS_HAPTICS_ACTIVATE_FILE	"/sys/class/leds/vibrator_double/activate"
-+#define LEDS_HAPTICS_DURATION_FILE	"/sys/class/leds/vibrator/duration"
-+#define LEDS_HAPTICS_ACTIVATE_FILE	"/sys/class/leds/vibrator/activate"
+ 
+-#define LEDS_HAPTICS_DURATION_FILE	"/sys/class/leds/vibrator/duration"
+-#define LEDS_HAPTICS_ACTIVATE_FILE	"/sys/class/leds/vibrator/activate"
 +#define LEDS_HAPTICS_DURATION_FILE	"/sys/class/leds/vibrator_single/duration"
 +#define LEDS_HAPTICS_ACTIVATE_FILE	"/sys/class/leds/vibrator_single/activate"
  
