@@ -11,7 +11,7 @@ https://github.com/TeamWin/android_bootable_recovery/issues/321
 
 Change-Id: I8b06ac64a1c7f2bb79a1295c505950afbf46a3d2
 ---
- minuitwrp/events.cpp | 4 ++--
+ minuitwrp/events.cpp | 6 ++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/minuitwrp/events.cpp b/minuitwrp/events.cpp
